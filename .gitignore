@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MythicalBeasts-API/mythicalbeasts-api/bin
+/MythicalBeasts-API/mythicalbeasts-api/obj
+/MythicalBeasts-API/.vs/MythicalBeasts-API
