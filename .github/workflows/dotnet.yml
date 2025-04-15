@@ -1,4 +1,4 @@
-# This workflow will build a .NET project
+# This workflow will build, publish and push a .NET project docker image
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
 name: .NET
@@ -26,3 +26,5 @@ jobs:
       run: dotnet build ./MythicalBeasts-API/MythicalBeasts-API.sln --no-restore
     - name: Test
       run: dotnet test ./MythicalBeasts-API/MythicalBeasts-API.sln --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish ./MythicalBeasts-API/MythicalBeasts-API.sln /p:PublishProfile=DefaultContainer
