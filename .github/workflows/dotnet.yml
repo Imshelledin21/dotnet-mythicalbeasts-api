@@ -21,8 +21,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore .\MythicalBeasts-API\MythicalBeasts-API.sln
+      run: dotnet restore ./MythicalBeasts-API/MythicalBeasts-API.sln
     - name: Build
-      run: dotnet build .\MythicalBeasts-API\MythicalBeasts-API.sln --no-restore
+      run: dotnet build ./MythicalBeasts-API/MythicalBeasts-API.sln --no-restore
     - name: Test
-      run: dotnet test .\MythicalBeasts-API\MythicalBeasts-API.sln --no-build --verbosity normal
+      run: dotnet test ./MythicalBeasts-API/MythicalBeasts-API.sln --no-build --verbosity normal
