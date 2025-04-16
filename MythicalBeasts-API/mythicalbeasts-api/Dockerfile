@@ -9,10 +9,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["mythicalbeasts-api/mythicalbeasts-api.csproj", "mythicalbeasts-api/"]
+COPY ["mythicalbeasts-api.csproj", "mythicalbeasts-api/"]
 RUN dotnet restore "./mythicalbeasts-api/mythicalbeasts-api.csproj"
 COPY . .
-WORKDIR "/src/mythicalbeasts-api"
+WORKDIR "."
 RUN dotnet build "./mythicalbeasts-api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
