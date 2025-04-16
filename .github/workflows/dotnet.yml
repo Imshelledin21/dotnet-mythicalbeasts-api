@@ -28,6 +28,8 @@ jobs:
       run: dotnet test ./MythicalBeasts-API/MythicalBeasts-API.sln --no-build --verbosity normal
     - name: Publish
       run: dotnet publish ./MythicalBeasts-API/MythicalBeasts-API.sln /p:PublishProfile=DefaultContainer
+    - name: Get Pathing Debug Info
+      run: echo ${PWD} && ls -lR
     - name: Build Docker Image
       working-directory: MythicalBeasts-API
       run: docker build . -t imshelledin21/mythicalbeasts:latest
