@@ -29,6 +29,6 @@ jobs:
     - name: Publish
       run: dotnet publish ./MythicalBeasts-API/MythicalBeasts-API.sln /p:PublishProfile=DefaultContainer
     - name: Build Docker Image
-      working-directory: ./MythicalBeasts-API/mythicalbeasts-api
+      working-directory: MythicalBeasts-API/mythicalbeasts-api
       run: docker build . -t imshelledin21/mythicalbeasts:latest
 
