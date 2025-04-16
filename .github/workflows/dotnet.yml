@@ -31,6 +31,6 @@ jobs:
     - name: Get Pathing Debug Info
       run: echo ${PWD} && ls -lR
     - name: Build Docker Image
-      working-directory: MythicalBeasts-API
+      working-directory: ./MythicalBeasts-API/mythicalbeasts-api
       run: docker build . -t imshelledin21/mythicalbeasts:latest
 
