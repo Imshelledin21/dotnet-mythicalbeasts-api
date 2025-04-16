@@ -38,4 +38,6 @@ jobs:
       with:
         username: imshelledin21
         password: ${{ secrets.DOCKER_TOKEN }}
+    - name: Push image to Docker Hub
+      run: docker push imshelledin21/mythicalbeasts-api
 
