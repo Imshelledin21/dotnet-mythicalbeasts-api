@@ -11,8 +11,8 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["mythicalbeasts-api.csproj", "mythicalbeasts-api/"]
 RUN dotnet restore "./mythicalbeasts-api/mythicalbeasts-api.csproj"
+WORKDIR "/src/mythicalbeasts-api"
 COPY . .
-WORKDIR "."
 RUN dotnet build "./mythicalbeasts-api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
