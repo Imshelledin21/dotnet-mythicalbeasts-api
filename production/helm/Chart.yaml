@@ -2,12 +2,6 @@ apiVersion: v2
 name: mythicalbeasts-api
 description: API For the Mythical Beasts Application
 type: application
-appVersion: 0.0.1
-version: 0.0.1
-dependencies:
-  - name: mythicalbeasts-api
-    alias: mythicalbeasts-api
-    version: 0.0.1
-    tags:
-      - latest
-    repository: oci://docker.io/imshelledin21
+appVersion: v0.0.1
+version: v0.0.1
+    

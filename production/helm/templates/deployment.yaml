@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: mythicalbeast
+    namespace: mythics
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mythicalbeast
+    spec:
+      containers:
+      - name: mythicalbeast
+        image: imshelledin21/mythicalbeasts:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://*:80
+  selector:
+    matchLabels:
+      app: mythicalbeast

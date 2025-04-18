@@ -1,0 +1,16 @@
+global:
+  image:
+    registry: null
+  extraArgs: []
+  extraEnv: []
+  extraEnvFrom: []
+
+  nameOverride: null
+  fullnameOverride: null
+
+  mythicalbeastsApi:
+    image:
+      registry: oci://docker.io/imshelledin21
+      repository: imshelledin21/mythicalbeasts
+      tag: latest
+      pullPolicy: IfNotPresent

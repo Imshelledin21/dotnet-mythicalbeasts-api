@@ -1,3 +1,5 @@
+using Grafana.OpenTelemetry;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,19 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+if (Environment.GetEnvironmentVariable("TELEMETRY_INSTRUMENTATION") == "code")
+{
+    builder.Services.AddOpenTelemetry()
+        .WithTracing(configure =>
+        {
+            configure.UseGrafana();
+        })
+        .WithMetrics(configure =>
+        {
+            configure.UseGrafana();
+        });
+}
 
 var app = builder.Build();
 
