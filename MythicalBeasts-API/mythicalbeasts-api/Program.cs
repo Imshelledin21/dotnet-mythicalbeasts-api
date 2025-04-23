@@ -17,7 +17,6 @@ builder.Services.AddOpenTelemetry()
     {
         configure.UseGrafana();
     });
-builder.Services.UseHttpClientMetrics();
 // --
 
 
