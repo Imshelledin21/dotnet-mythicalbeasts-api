@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using mythicalbeasts_api.Models;
+using System.Diagnostics;
 
 namespace mythicalbeasts_api.Controllers
 {
@@ -10,6 +11,7 @@ namespace mythicalbeasts_api.Controllers
         [HttpGet(Name = "GetMythicalBeasts")]
         public MythicalBeasts Get()
         {
+            Console.WriteLine(Activity.Current.Id);
             return new MythicalBeasts()
             {
                 Name = "George",

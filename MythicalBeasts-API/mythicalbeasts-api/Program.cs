@@ -1,4 +1,6 @@
 using Grafana.OpenTelemetry;
+using OpenTelemetry.Metrics;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,12 +15,8 @@ builder.Services.AddOpenTelemetry()
     .WithTracing(configure =>
     {
         configure.UseGrafana();
-    })
-    .WithMetrics(configure =>
-    {
-        configure.UseGrafana();
     });
-
+builder.Services.UseHttpClientMetrics();
 
 var app = builder.Build();
 
@@ -28,6 +26,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseRouting();
+app.UseEndpoints(opts =>
+{
+    opts.MapMetrics();
+});
+app.UseHttpMetrics();
 
 app.UseHttpsRedirection();
 
