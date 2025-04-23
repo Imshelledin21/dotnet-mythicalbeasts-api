@@ -11,14 +11,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// -- Add this
 builder.Services.AddOpenTelemetry()
     .WithTracing(configure =>
     {
         configure.UseGrafana();
     });
 builder.Services.UseHttpClientMetrics();
+// --
+
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -27,12 +32,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// -- ADD This
 app.UseRouting();
 app.UseEndpoints(opts =>
 {
     opts.MapMetrics();
 });
 app.UseHttpMetrics();
+// -- 
 
 app.UseHttpsRedirection();
 
