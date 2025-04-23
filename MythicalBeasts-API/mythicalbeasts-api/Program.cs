@@ -9,18 +9,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-if (Environment.GetEnvironmentVariable("TELEMETRY_INSTRUMENTATION") == "code")
-{
-    builder.Services.AddOpenTelemetry()
-        .WithTracing(configure =>
-        {
-            configure.UseGrafana();
-        })
-        .WithMetrics(configure =>
-        {
-            configure.UseGrafana();
-        });
-}
+builder.Services.AddOpenTelemetry()
+    .WithTracing(configure =>
+    {
+        configure.UseGrafana();
+    })
+    .WithMetrics(configure =>
+    {
+        configure.UseGrafana();
+    });
+
 
 var app = builder.Build();
 
