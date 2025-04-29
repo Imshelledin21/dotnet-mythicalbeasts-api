@@ -16,6 +16,10 @@ builder.Services.AddOpenTelemetry()
     .WithTracing(configure =>
     {
         configure.UseGrafana();
+    })
+    .WithMetrics(configure =>
+    {
+        configure.UseGrafana();
     });
 // --
 
@@ -30,15 +34,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-// -- ADD This
-app.UseRouting();
-app.UseEndpoints(opts =>
-{
-    opts.MapMetrics();
-});
-app.UseHttpMetrics();
-// -- 
 
 app.UseHttpsRedirection();
 
