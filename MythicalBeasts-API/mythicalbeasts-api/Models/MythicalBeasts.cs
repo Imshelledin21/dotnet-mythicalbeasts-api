@@ -7,7 +7,5 @@
         public string Description { get; set; }
         public string Type { get; set; }
         public string Job { get; set; }
-        public int JobId { get; set; }
-
     }
 }
