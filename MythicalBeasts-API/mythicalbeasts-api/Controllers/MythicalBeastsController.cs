@@ -18,8 +18,7 @@ namespace mythicalbeasts_api.Controllers
                 Type = "Centaur",
                 Description = "A stalwart defender of butterflies and chess pieces.",
                 Job = "Cooper",
-                Id = 1,
-                JobId = 1,
+                Id = 1
             };
         }
     }
