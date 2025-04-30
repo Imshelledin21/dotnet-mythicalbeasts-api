@@ -23,7 +23,7 @@ namespace mythicalbeasts_api.Controllers
         {
             _logger.LogInformation("New Request to get all Mythical Beasts.");
 
-            var http = new Utils.Http();
+            var http = new Utils.Http(_logger);
 
             var beasts = await http.Get(null);
             return beasts;
