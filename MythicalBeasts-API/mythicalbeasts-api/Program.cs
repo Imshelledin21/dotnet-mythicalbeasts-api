@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// -- Add this
+
 builder.Services.AddOpenTelemetry()
     .WithTracing(configure =>
     {
@@ -21,7 +21,7 @@ builder.Services.AddOpenTelemetry()
     {
         configure.UseGrafana();
     });
-// --
+
 
 
 var app = builder.Build();

@@ -28,5 +28,23 @@ namespace mythicalbeasts_api.Controllers
             var beasts = await http.Get(null);
             return beasts;
         }
+
+        [HttpGet("/Random", Name = "Get a random Mythical Beast")]
+        public async Task<MythicalBeasts> GetRandom()
+        {
+            _logger.LogInformation("New Request to get a Random Mythical Beast.");
+
+            var http = new Utils.Http(_logger);
+
+            var beasts = await http.Get(null);
+            var beastCount = beasts.Count();
+
+            var rand = new Random();
+            var id = rand.Next(1, beastCount);
+
+            var beast = await http.Get(id);
+
+            return beast.First<MythicalBeasts>();
+        }
     }
 }
