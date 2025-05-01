@@ -12,16 +12,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddOpenTelemetry()
-    .WithTracing(configure =>
-    {
-        configure.UseGrafana();
-    })
-    .WithMetrics(configure =>
-    {
-        configure.UseGrafana();
-    });
-
+if (Environment.GetEnvironmentVariable("CODE_INSTRUMENTATION") == "true")
+{
+    builder.Services.AddOpenTelemetry()
+        .WithTracing(configure =>
+        {
+            configure.UseGrafana();
+        })
+        .WithMetrics(configure =>
+        {
+            configure.UseGrafana();
+        });
+}
 
 
 var app = builder.Build();
