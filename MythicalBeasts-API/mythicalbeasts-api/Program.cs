@@ -18,16 +18,12 @@ if (Environment.GetEnvironmentVariable("CODE_INSTRUMENTATION") == "true")
         .WithTracing(configure =>
         {
             configure.UseGrafana();
-        })
-        .WithMetrics(configure =>
-        {
-            configure.UseGrafana();
         });
+    builder.Services.UseHttpClientMetrics();
 }
 
 
 var app = builder.Build();
-
 
 
 // Configure the HTTP request pipeline.
@@ -42,5 +38,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseRouting();
+app.UseHttpMetrics();
+app.UseEndpoints(endpoints => { endpoints.MapMetrics(); });
 
 app.Run();
