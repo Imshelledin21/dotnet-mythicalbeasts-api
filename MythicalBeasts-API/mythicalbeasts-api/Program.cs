@@ -39,8 +39,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseRouting();
-app.UseHttpMetrics();
-app.UseEndpoints(endpoints => { endpoints.MapMetrics(); });
+if (Environment.GetEnvironmentVariable("CODE_INSTRUMENTATION") == "true")
+{
+    app.UseRouting();
+    app.UseHttpMetrics();
+    app.UseEndpoints(endpoints => { endpoints.MapMetrics(); });
+}
 
 app.Run();
